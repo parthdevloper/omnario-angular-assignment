@@ -1,0 +1,58 @@
+<section class="custom-table">
+  <h1>Omnirio Angular Assignment</h1>
+  <p>
+    <strong
+      >NOTE: Due to time limitations some features like addition on data etc.
+      are not yet implemented. <br />
+      <br />
+      USED: angular-in-memory-web-api for FakeDb calls. Refer:
+      https://angular.io/tutorial/toh-pt6
+    </strong>
+  </p>
+  <p>
+    <small
+      ><a href="https://stackoverflow.com/users/12466554/parth-developer"
+        >My Stackoverflow profile:
+        https://stackoverflow.com/users/12466554/parth-developer</a
+      ></small
+    >
+  </p>
+  <div class="form">
+    <div class="search-text-wrapper">
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        placeholder="Search By Columns"
+      />
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="table">
+      <tr>
+        <th class="pointer">Expand/Collapse</th>
+        <th class="pointer" (click)="sort('CategoryID')">Category ID</th>
+        <th class="pointer" (click)="sort('CategoryName')">Category</th>
+        <th class="pointer" (click)="sort('CategoryItem')">Item</th>
+        <th class="pointer" (click)="sort('Description')">Description</th>
+      </tr>
+      <ng-container
+        *ngFor="let item of records | category: searchText; let i = index"
+      >
+        <tr>
+          <td class="pointer" (click)="expandRow(i)">></td>
+          <td>{{ item.CategoryID }}</td>
+          <td>{{ item.CategoryName }}</td>
+          <td>{{ item.CategoryItem }}</td>
+          <td>{{ item.Description }}</td>
+        </tr>
+        <tr *ngIf="item.isExpanded">
+          <td colspan="4">({{ i + 1 }}) Expanded data here...</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </ng-container>
+    </table>
+  </div>
+</section>
