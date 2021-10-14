@@ -1,0 +1,1 @@
+# omnario-angular-assignment
